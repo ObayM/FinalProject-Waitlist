@@ -122,12 +122,6 @@ const Features = () => {
   const [currentFeature, setCurrentFeature] = useState(0);
 
   // Create an array of progress values for each feature
-  const featureProgresses = features.map((_, index) => 
-    useTransform(
-      smoothProgress, 
-      [index / features.length, (index + 1) / features.length], 
-      [0, 1]
-    ))
   useEffect(() => {
     const unsubscribe = smoothProgress.onChange(v => {
       const newIndex = Math.min(Math.floor(v * features.length), features.length - 1);
@@ -135,6 +129,16 @@ const Features = () => {
     });
     return () => unsubscribe();
   }, [smoothProgress]);
+
+  const progress0 = useTransform(smoothProgress, [0, 1/6], [0, 1]);
+  const progress1 = useTransform(smoothProgress, [1/6, 2/6], [0, 1]);
+  const progress2 = useTransform(smoothProgress, [2/6, 3/6], [0, 1]);
+  const progress3 = useTransform(smoothProgress, [3/6, 4/6], [0, 1]);
+  const progress4 = useTransform(smoothProgress, [4/6, 5/6], [0, 1]);
+  const progress5 = useTransform(smoothProgress, [5/6, 1], [0, 1]);
+
+  const progressArray = [progress0, progress1, progress2, progress3, progress4, progress5];
+
 
   return (
     <div ref={containerRef} className="relative">
@@ -167,7 +171,7 @@ const Features = () => {
         <FeatureCard 
           key={index} 
           feature={feature} 
-          progress={featureProgresses[index]}
+          progress={progressArray[index]}
         />
       ))}
       <div className="h-screen flex items-center justify-center bg-gradient-to-b from-transparent to-gray-900 relative overflow-hidden">
