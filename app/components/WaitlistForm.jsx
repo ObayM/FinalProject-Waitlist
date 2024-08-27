@@ -126,7 +126,7 @@ const WaitingList = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
-                We've added you to our waitlist. We'll be in touch soon!
+                We&apos;ve added you to our waitlist. We&apos;ll be in touch soon!
               </motion.p>
             </motion.div>
           )}

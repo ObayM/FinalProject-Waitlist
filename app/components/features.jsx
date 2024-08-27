@@ -2,7 +2,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useInView } from 'framer-motion';
 import { Brain, WalletCards, Trophy, Lightbulb, Check, Repeat, ChevronDown } from 'lucide-react';
-import { Typewriter } from 'react-simple-typewriter';
 
 const features = [
   { title: "AI-Powered Job Matching", icon: Brain, description: "Our advanced AI algorithms analyze your skills, experience, and preferences to find your perfect career match.", color: "#4F46E5" },
@@ -122,6 +121,13 @@ const Features = () => {
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   const [currentFeature, setCurrentFeature] = useState(0);
 
+  // Create an array of progress values for each feature
+  const featureProgresses = features.map((_, index) => 
+    useTransform(
+      smoothProgress, 
+      [index / features.length, (index + 1) / features.length], 
+      [0, 1]
+    ))
   useEffect(() => {
     const unsubscribe = smoothProgress.onChange(v => {
       const newIndex = Math.min(Math.floor(v * features.length), features.length - 1);
@@ -161,11 +167,7 @@ const Features = () => {
         <FeatureCard 
           key={index} 
           feature={feature} 
-          progress={useTransform(
-            smoothProgress, 
-            [index / features.length, (index + 1) / features.length], 
-            [0, 1]
-          )}
+          progress={featureProgresses[index]}
         />
       ))}
       <div className="h-screen flex items-center justify-center bg-gradient-to-b from-transparent to-gray-900 relative overflow-hidden">

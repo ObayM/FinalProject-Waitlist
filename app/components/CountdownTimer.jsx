@@ -151,7 +151,7 @@ const AnimatedLaunchCountdown = () => {
         </motion.h2>
         <div className="flex justify-center mb-12">
           <AnimatePresence>
-            {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+            {timerComponents.length ? timerComponents : <span>Time&apos;s up!</span>}
           </AnimatePresence>
         </div>
         <motion.button
