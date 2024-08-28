@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
-import { Twitter, Linkedin, Instagram, Facebook,Tiktok } from 'lucide-react';
+import { Twitter, Linkedin, Instagram, Facebook } from 'lucide-react';
+import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -30,7 +31,7 @@ const Footer = () => {
                     <Facebook className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
               </a>
                 <a href='https://www.tiktok.com/@falconmind7' target='_blank'>
-                    <Tiktok className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
+                    <FaTiktok className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
                 </a>
 
             </div>
