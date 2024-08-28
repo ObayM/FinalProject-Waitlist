@@ -2,18 +2,30 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AlertCircle } from 'lucide-react';
+import { db } from '@/firebase';
+import { setDoc, doc, } from "firebase/firestore";
 
 const WaitingList = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    
     e.preventDefault();
-    if (email) {
-      // Handle submission logic here
-      setIsSubmitted(true);
+    try {
+      let docRef;
+      if (email) {
+        console.log("Adding email to Firestore")
+        console.log(docRef);
+        docRef = doc(db, "/waitlist",email);
+        console.log(docRef);
+        await setDoc(docRef, {email});
+        setIsSubmitted(true);
       
-    }
+      }
+    } catch (error) {
+      console.error("Error adding email to Firestore", error);
+  }
   };
 
   const formVariants = {

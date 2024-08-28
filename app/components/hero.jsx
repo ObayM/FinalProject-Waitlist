@@ -176,7 +176,7 @@ const HeroSection = () => {
         >
           <motion.h1 
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+            className="text-2xl sm:text-2xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
           >
             <Typewriter
               words={['Empower Your Future', 'Unlock Your Potential', 'Navigate Your Career']}

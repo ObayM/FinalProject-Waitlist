@@ -45,28 +45,28 @@ const FeatureCard = ({ feature, progress }) => {
       className="flex flex-col items-center justify-center h-screen sticky top-0"
     >
       <motion.div
-        className="bg-white rounded-3xl shadow-2xl p-8 max-w-2xl w-full mx-4 overflow-hidden"
+        className="bg-white rounded-3xl shadow-2xl p-4 sm:p-6 md:p-8 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl w-full mx-2 sm:mx-4 overflow-hidden"
         initial={{ boxShadow: `0 0 0 0 ${feature.color}` }}
-        animate={{ boxShadow: isInView ? `0 0 30px 5px ${feature.color}` : `0 0 0 0 ${feature.color}` }}
+        animate={{ boxShadow: isInView ? `0 0 20px 3px ${feature.color}` : `0 0 0 0 ${feature.color}` }}
         transition={{ duration: 0.5 }}
       >
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: isInView ? 1 : 0, rotate: isInView ? 0 : -180 }}
           transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          className="mb-6"
+          className="mb-4 sm:mb-6"
         >
-          <feature.icon style={{ color: feature.color }} className="w-20 h-20" />
+          <feature.icon style={{ color: feature.color }} className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20" />
         </motion.div>
         <motion.h3 
-          className="text-4xl font-bold mb-4" 
+          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4" 
           style={{ color: feature.color, x: titleX }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
         >
           {feature.title}
         </motion.h3>
         <motion.p 
-          className="text-xl text-gray-600"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600"
           style={{ x: descriptionX }}
           transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
         >
@@ -106,11 +106,11 @@ const ParallaxBackground = ({ scrollYProgress }) => {
 const ScrollPrompt = () => {
   return (
     <motion.div
-      className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+      className="absolute bottom-4 sm:bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2"
       animate={{ y: [0, 10, 0] }}
       transition={{ repeat: Infinity, duration: 1.5 }}
     >
-      <ChevronDown className="w-10 h-10 text-gray-400" />
+      <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-gray-400" />
     </motion.div>
   );
 };
@@ -121,7 +121,6 @@ const Features = () => {
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
   const [currentFeature, setCurrentFeature] = useState(0);
 
-  // Create an array of progress values for each feature
   useEffect(() => {
     const unsubscribe = smoothProgress.onChange(v => {
       const newIndex = Math.min(Math.floor(v * features.length), features.length - 1);
@@ -139,26 +138,25 @@ const Features = () => {
 
   const progressArray = [progress0, progress1, progress2, progress3, progress4, progress5];
 
-
   return (
     <div ref={containerRef} className="relative">
       <ParallaxBackground scrollYProgress={smoothProgress} />
       <motion.div 
-        className="text-center sticky top-0 z-10 bg-gradient-to-r from-indigo-900 to-purple-900 backdrop-blur-md py-4 px-4 shadow-md"
+        className="text-center sticky top-0 z-10 bg-gradient-to-r from-indigo-900 to-purple-900 backdrop-blur-md py-2 sm:py-3 md:py-4 px-2 sm:px-3 md:px-4 shadow-md"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
       >
         <motion.h2 
-            className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
-          >
+          className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+        >
           Discover Our Features
         </motion.h2>
-        <div className="mt-4 flex justify-center space-x-2">
+        <div className="mt-2 sm:mt-3 md:mt-4 flex justify-center space-x-1 sm:space-x-2">
           {features.map((_, index) => (
             <motion.div
               key={index}
-              className="w-3 h-3 rounded-full bg-gray-300"
+              className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-300"
               animate={{ 
                 scale: currentFeature === index ? 1.5 : 1,
                 backgroundColor: currentFeature === index ? features[index].color : "#D1D5DB"
@@ -174,9 +172,9 @@ const Features = () => {
           progress={progressArray[index]}
         />
       ))}
-      <div className="h-screen flex items-center justify-center bg-gradient-to-b from-transparent to-gray-900 relative overflow-hidden">
+      <div className="h-screen flex items-center justify-center bg-gradient-to-b from-transparent to-blue-50 relative overflow-hidden">
         <motion.p 
-          className="text-4xl font-bold text-white text-center px-4 relative z-10"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-purple-600 text-center px-2 sm:px-4 relative z-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

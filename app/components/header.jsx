@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useScroll } from 'framer-motion';
 
 const Header = () => {
 
@@ -27,7 +26,7 @@ const Header = () => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-white text-lg font-semibold"
+          className="text-white text-lg font-semibold sm:text-sm"
         >
           Empowering Your Future
         </motion.div>
