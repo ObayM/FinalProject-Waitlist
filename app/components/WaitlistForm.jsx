@@ -10,24 +10,21 @@ const WaitingList = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
+    if (!email) {
+      return;
+    }
+    
     try {
-      let docRef;
-      if (email) {
-        console.log("Adding email to Firestore")
-        console.log(docRef);
-        docRef = doc(db, "/waitlist",email);
-        console.log(docRef);
-        await setDoc(docRef, {email});
-        setIsSubmitted(true);
-      
-      }
+      const docRef = doc(db, "waitlist", email);
+      await setDoc(docRef, { email, timestamp: new Date() });
+      setIsSubmitted(true);
+      setEmail(''); // Clear the email input
     } catch (error) {
       console.error("Error adding email to Firestore", error);
-  }
+      // Here you could set an error state and display it to the user
+    }
   };
-
   const formVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { 
