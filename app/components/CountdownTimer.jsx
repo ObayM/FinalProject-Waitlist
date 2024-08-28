@@ -120,7 +120,7 @@ const CountDownSection = () => {
         </motion.h1>
         <div className="flex flex-wrap justify-center mb-12">
           <AnimatePresence>
-            {timerComponents.length ? timerComponents : <span className="text-2xl text-gray-800">We've Launched!</span>}
+            {timerComponents.length ? timerComponents : <span className="text-2xl text-gray-800">We&apos;ve Launched!</span>}
           </AnimatePresence>
         </div>
         <motion.button
