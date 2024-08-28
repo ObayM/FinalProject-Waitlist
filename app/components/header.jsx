@@ -17,7 +17,7 @@ const Header = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <img src="/api/placeholder/50/50" alt="Logo" className="w-12 h-12 mr-2" />
+          <img src="/logo.png" alt="Logo" className="w-16 h-16 mr-2 rounded-full" />
           <span className="text-white text-2xl font-bold">FalconMind</span>
         </motion.div>
         
