@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import { Twitter, Linkedin, Instagram, ChevronRight } from 'lucide-react';
+import { Twitter, Linkedin, Instagram, Facebook,Tiktok } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -20,9 +20,19 @@ const Footer = () => {
             </h2>
             <p className="text-lg">Empowering your learning and career journey</p>
             <div className="flex space-x-4">
-              <Twitter className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
-              <Linkedin className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
-              <Instagram className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
+                <a href="https://www.linkedin.com/company/falcon-mind/" target="_blank">
+                <Linkedin className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
+                </a>
+              <a href='https://www.instagram.com/falconmind.official/' target='_blank'>
+                <Instagram className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
+              </a>
+              <a href='https://www.facebook.com/falconmind.official/' target='_blank'>
+                    <Facebook className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
+              </a>
+                <a href='https://www.tiktok.com/@falconmind7' target='_blank'>
+                    <Tiktok className="w-6 h-6 text-blue-300 hover:text-yellow-300 transition-colors duration-300 cursor-pointer" />
+                </a>
+
             </div>
         </div>
        </div>
